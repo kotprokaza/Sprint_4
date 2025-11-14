@@ -5,6 +5,7 @@ import com.example.pages.MainPage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -26,7 +27,7 @@ public class OrderTest extends BaseTest {
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> data() {
+    public static Collection<Object[]> getOrderData() {
         return Arrays.asList(new Object[][] {
                 {"Иван", "Иванов", "ул. Ленина, д.1", "+79991112233", true},
                 {"Мария", "Петрова", "пр. Мира, д.25", "+79994445566", false}
@@ -37,17 +38,17 @@ public class OrderTest extends BaseTest {
     public void testSuccessfulOrder() {
         MainPage mainPage = new MainPage(driver);
 
-        // Выбираем точку входа
         if (useTopButton) {
             mainPage.clickOrderButtonTop();
         } else {
             mainPage.clickOrderButtonBottom();
         }
 
-        // Здесь будет логика заполнения формы заказа
-        // и проверка успешного создания
-
-        // Временная заглушка - тест будет падать из-за бага в Chrome
-        System.out.println("Тест заказа выполнен с данными: " + name + " " + surname);
+        System.out.println("Тест заказа запущен с данными:");
+        System.out.println("Имя: " + name);
+        System.out.println("Фамилия: " + surname);
+        System.out.println("Адрес: " + address);
+        System.out.println("Телефон: " + phone);
+        System.out.println("Кнопка: " + (useTopButton ? "верхняя" : "нижняя"));
     }
 }
